@@ -190,11 +190,15 @@ export const CountryList = (props: CountryListProps) => {
     .join('')
 
   const scrollTo = (letter: string, animated: boolean = true) => {
-    const index = indexLetter.indexOf(letter)
-    setLetter(letter)
-    if (flatListRef.current) {
-      flatListRef.current!.scrollToIndex({ animated, index })
+    if(indexLetter && letter) {
+      const index = indexLetter.indexOf(letter)
+      setLetter(letter)
+      
+      if (flatListRef.current) {
+        flatListRef.current!.scrollToIndex({ animated, index })
+      }
     }
+    
   }
   const onScrollToIndexFailed = (_info: {
     index: number
